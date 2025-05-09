@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { formatDistanceToNow } from 'date-fns';
 
@@ -59,7 +59,6 @@ type Property = {
 
 export default function PropertiesPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   // States
   const [properties, setProperties] = useState<Property[]>([]);
@@ -76,9 +75,9 @@ export default function PropertiesPage() {
   const { register, handleSubmit, watch, setValue, reset } = useForm({
     resolver: zodResolver(filterSchema),
     defaultValues: {
-      search: searchParams.get('search') || '',
-      bedrooms: searchParams.get('bedrooms') || '',
-      status: searchParams.get('status') || '',
+      search: '',
+      bedrooms: '',
+      status: '',
     },
   });
 
@@ -179,12 +178,7 @@ export default function PropertiesPage() {
   // Apply filters
   const onSubmit = (data: z.infer<typeof filterSchema>) => {
     // Update URL with filters
-    const params = new URLSearchParams();
-    if (data.search) params.set('search', data.search);
-    if (data.bedrooms) params.set('bedrooms', data.bedrooms);
-    if (data.status) params.set('status', data.status);
-
-    router.push(`?${params.toString()}`);
+    
   };
 
   // Reset filters
