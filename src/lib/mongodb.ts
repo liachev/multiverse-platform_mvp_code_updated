@@ -1,7 +1,7 @@
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
 const uri = process.env.MONGODB_URI;
-console.log(uri);
+
 if (!uri) {
   throw new Error('Please define the MONGODB_URI environment variable inside .env.local or your hosting provider settings');
 }
