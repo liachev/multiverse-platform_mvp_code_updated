@@ -44,21 +44,8 @@ const placeholderProperties: Property[] = [
 
 async function getPropertiesCollection(): Promise<Collection<Property>> {
   const client = await connectToDatabase();
-  const db = client.db(); // Use default DB from connection string
+  const db = client.db('drah'); // Use default DB from connection string
   const collection = db.collection<Property>('properties');
-
-  // Insert placeholder data if the collection is empty (for initial setup)
-  const count = await collection.countDocuments();
-  if (count === 0) {
-    console.log('Inserting placeholder properties into the database...');
-    try {
-      await collection.insertMany(placeholderProperties);
-      console.log('Placeholder properties inserted.');
-    } catch (error) {
-      console.error('Failed to insert placeholder properties:', error);
-      // Decide if you want to throw or continue if insertion fails
-    }
-  }
 
   return collection;
 }
