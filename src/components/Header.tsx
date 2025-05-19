@@ -1,7 +1,17 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+
 const Header = () => {
+  const pathname = usePathname();
+  
+  const isActive = (path: string) => {
+    return pathname === path;
+  };
+
   return (
     <header className="bg-white shadow-md">
       <nav className="container mx-auto px-6 py-3 flex justify-between items-center">
@@ -11,12 +21,76 @@ const Header = () => {
           </Link>
         </div>
         <div className="hidden md:flex items-center space-x-4">
-          <Link href="/" className="text-gray-700 hover:text-drah-blue px-3 py-2 rounded-md text-sm font-medium">Home</Link>
-          <Link href="/about" className="text-gray-700 hover:text-drah-blue px-3 py-2 rounded-md text-sm font-medium">About DRAH</Link>
-          <Link href="/property-models" className="text-gray-700 hover:text-drah-blue px-3 py-2 rounded-md text-sm font-medium">Property Models</Link>
-          <Link href="/properties" className="text-gray-700 hover:text-drah-blue px-3 py-2 rounded-md text-sm font-medium">SVS UIC Properties</Link>
-          <Link href="/ai-tools" className="text-gray-700 hover:text-drah-blue px-3 py-2 rounded-md text-sm font-medium">AI Business Tools</Link>
-          <Link href="/account" className="text-gray-700 hover:text-drah-blue px-3 py-2 rounded-md text-sm font-medium">Account</Link>
+          <Link 
+            href="/" 
+            className={`px-3 py-2 rounded-md text-sm font-medium ${
+              isActive('/') 
+                ? 'text-white bg-drah-blue' 
+                : 'text-gray-700 hover:text-drah-blue'
+            }`}
+          >
+            Home
+          </Link>
+          <Link 
+            href="/about" 
+            className={`px-3 py-2 rounded-md text-sm font-medium ${
+              isActive('/about') 
+                ? 'text-white bg-drah-blue' 
+                : 'text-gray-700 hover:text-drah-blue'
+            }`}
+          >
+            About DRAH
+          </Link>
+          <Link 
+            href="/property-models" 
+            className={`px-3 py-2 rounded-md text-sm font-medium ${
+              isActive('/property-models') 
+                ? 'text-white bg-drah-blue' 
+                : 'text-gray-700 hover:text-drah-blue'
+            }`}
+          >
+            Property Models
+          </Link>
+          <Link 
+            href="/properties" 
+            className={`px-3 py-2 rounded-md text-sm font-medium ${
+              isActive('/properties') 
+                ? 'text-white bg-drah-blue' 
+                : 'text-gray-700 hover:text-drah-blue'
+            }`}
+          >
+            SVS UIC Properties
+          </Link>
+          <Link 
+            href="/ai-tools" 
+            className={`px-3 py-2 rounded-md text-sm font-medium ${
+              isActive('/ai-tools') 
+                ? 'text-white bg-drah-blue' 
+                : 'text-gray-700 hover:text-drah-blue'
+            }`}
+          >
+            AI Business Tools
+          </Link>
+          <Link 
+            href="/reserve" 
+            className={`px-3 py-2 rounded-md text-sm font-medium ${
+              isActive('/reserve') 
+                ? 'text-white bg-drah-blue' 
+                : 'text-gray-700 hover:text-drah-blue'
+            }`}
+          >
+            Reserve
+          </Link>
+          <Link 
+            href="/account" 
+            className={`px-3 py-2 rounded-md text-sm font-medium ${
+              isActive('/account') 
+                ? 'text-white bg-drah-blue' 
+                : 'text-gray-700 hover:text-drah-blue'
+            }`}
+          >
+            Account
+          </Link>
           {/* Add Marketplace/Help later if needed */}
         </div>
         {/* Mobile menu button (implementation TBD) */}
@@ -46,4 +120,5 @@ const Header = () => {
     </header>
   );
 };
+
 export default Header;

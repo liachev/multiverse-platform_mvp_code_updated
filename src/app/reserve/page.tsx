@@ -1,4 +1,9 @@
+'use client';
+
 import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import Script from 'next/script';
 
 export default function ReservePage() {
   return (
@@ -13,13 +18,12 @@ export default function ReservePage() {
         <iframe
           id="JotFormIFrame-250896626150158"
           title="Pre-Order Form"
-          // onLoad="window.parent.scrollTo(0,0)" // This might cause issues in Next.js, can be omitted or handled differently
           allowTransparency={true}
           allowFullScreen={true}
           allow="geolocation; microphone; camera;"
           src="https://form.jotform.com/250896626150158"
           frameBorder="0"
-          style={{ minWidth: '100%', height: '1200px', border: 'none' }} // Adjusted height
+          style={{ minWidth: '100%', height: '1200px', border: 'none' }}
           scrolling="yes"
         >
         </iframe>
@@ -30,4 +34,3 @@ export default function ReservePage() {
     </div>
   );
 }
-
