@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'; // Import the Header component
+import Script from 'next/script'; // Import Script component for client-side scripts
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -25,6 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="light"> {/* Changed default to light mode */}
+      <head>
+        {/* JivoSite Chat Widget */}
+        <Script src="//code.jivosite.com/widget/vyIGd8TLoD" strategy="afterInteractive" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
         <Header /> {/* Add the Header component */}
         <main className="flex-grow container mx-auto px-6 py-8">

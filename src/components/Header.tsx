@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-
 const Header = () => {
   return (
     <header className="bg-white shadow-md">
@@ -14,6 +13,7 @@ const Header = () => {
         <div className="hidden md:flex items-center space-x-4">
           <Link href="/" className="text-gray-700 hover:text-drah-blue px-3 py-2 rounded-md text-sm font-medium">Home</Link>
           <Link href="/about" className="text-gray-700 hover:text-drah-blue px-3 py-2 rounded-md text-sm font-medium">About DRAH</Link>
+          <Link href="/property-models" className="text-gray-700 hover:text-drah-blue px-3 py-2 rounded-md text-sm font-medium">Property Models</Link>
           <Link href="/properties" className="text-gray-700 hover:text-drah-blue px-3 py-2 rounded-md text-sm font-medium">SVS UIC Properties</Link>
           <Link href="/ai-tools" className="text-gray-700 hover:text-drah-blue px-3 py-2 rounded-md text-sm font-medium">AI Business Tools</Link>
           <Link href="/account" className="text-gray-700 hover:text-drah-blue px-3 py-2 rounded-md text-sm font-medium">Account</Link>
@@ -46,6 +46,4 @@ const Header = () => {
     </header>
   );
 };
-
 export default Header;
-
